@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['localhost', 'precious-paws.herokuapp.com/']
+ALLOWED_HOSTS = ['localhost', 'precious-paws.herokuapp.com']
 
 
 # Application definition
