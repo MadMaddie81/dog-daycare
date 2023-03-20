@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Service
@@ -13,14 +13,7 @@ class Home(generic.View):
             )
 
 
-# class Services(generic.ListView):
-#     model = Service
-#     queryset = Service.objects.all()
-#     template_name = 'services.html'
-
-def services(request):
-    deals = Service.objects.all()
-    context = {
-        'deals': deals
-    }
-    return render(request, 'services.html', context)
+class Services(generic.ListView):
+    model = Service
+    template_name = 'services.html'
+    ordering = ['price']

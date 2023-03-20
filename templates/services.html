@@ -25,43 +25,43 @@
         <div class="container">
             <div class="row">
 
-                {% for deal in deals %}
+                {% for service in service_list %}
 
                 <div class="col-lg-3 col-md-6">
                     <div class="box featured" data-aos="fade-up">
-                        <h3>{{ deal.title }}</h3>
-                        <h4><sup>€</sup>{{ deal.price }}<span> / month</span></h4>
-                        <h6><i class="fa-solid fa-calendar-check"></i> {{ deal.no_days }} days / week</h6>
+                        <h3>{{ service.title }}</h3>
+                        <h4><sup>€</sup>{{ service.price }}<span> / month</span></h4>
+                        <h6><i class="fa-solid fa-calendar-check"></i> {{ service.no_days }} days / week</h6>
                         <h6><i class="fa-solid fa-clock"></i> Pick-up / Drop-off: 7-18</h6>
                         <ul>
                             <h6><strong>Services included:</strong></h6>
                             <li>2 walks per day</li>
 
-                            {% if deal.nails %}
+                            {% if service.nails %}
                             <li>1 nail trimming / month</li>
                             {% else %}
                             <li class="na">1 nail trimming / month</li>
                             {% endif %}
 
-                            {% if deal.teeth %}
+                            {% if service.teeth %}
                             <li>1 toothbrushing / month</li>
                             {% else %}
                             <li class="na">1 toothbrushing / month</li>
                             {% endif %}
 
-                            {% if deal.bath %}
+                            {% if service.bath %}
                             <li>1 bath / month</li>
                             {% else %}
                             <li class="na">1 bath / month</li>
                             {% endif %}
 
-                            {% if deal.hair_cuts %}
+                            {% if service.hair_cuts %}
                             <li>2 haircuts / year</li>
                             {% else %}
                             <li class="na">2 haircuts / year</li>
                             {% endif %}
 
-                            {% if deal.pickup %}
+                            {% if service.pickup %}
                             <li>1 pick-up / drop-off / month</li>
                             {% else %}
                             <li class="na">1 pick-up / drop-off / month</li>
