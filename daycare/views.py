@@ -12,4 +12,15 @@ class Home(generic.View):
             "index.html"
             )
 
-    
+
+# class Services(generic.ListView):
+#     model = Service
+#     queryset = Service.objects.all()
+#     template_name = 'services.html'
+
+def services(request):
+    deals = Service.objects.all()
+    context = {
+        'deals': deals
+    }
+    return render(request, 'services.html', context)
