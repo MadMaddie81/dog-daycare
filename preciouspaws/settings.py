@@ -39,6 +39,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG")
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 ALLOWED_HOSTS = ['localhost', 'precious-paws.herokuapp.com']
 
@@ -52,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
+    'crispy_forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',

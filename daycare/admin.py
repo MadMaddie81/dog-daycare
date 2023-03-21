@@ -7,5 +7,4 @@ admin.site.register(Service)
 @admin.register(Application)
 class ApplicationAdmin(admin.ModelAdmin):
 
-    prepopulated_fields = {'slug': ('dog_name',)}
-    list_display = ('dog_name', 'slug', 'status', 'created_on')
+    list_display = ('dog_name', 'author', 'status', 'created_on')

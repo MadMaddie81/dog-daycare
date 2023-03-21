@@ -19,6 +19,14 @@ class Service(models.Model):
 
 class Application(models.Model):
 
+    PACKAGE = [
+        (None, 'Pick a choice'),
+        ('Iron', 'Iron Package'),
+        ('Bronze', 'Bronze Package'),
+        ('Silver', 'Silver Package'),
+        ('Gold', 'Gold Package')
+    ]
+
     STATUS = [
         (0, 'Pending'),
         (1, 'Approved'),
@@ -48,11 +56,14 @@ class Application(models.Model):
     ]
 
     dog_name = models.CharField(max_length=200, blank=False)
-    slug = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(
-        User, default='', on_delete=models.CASCADE)
+    author = models.CharField(max_length=80)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    package = models.CharField(
+        max_length=10,
+        choices=PACKAGE,
+        default=None
+        )
     breed = models.CharField(max_length=200, blank=False, default='')
     weight = models.CharField(
         max_length=10,
@@ -73,7 +84,7 @@ class Application(models.Model):
     insured = models.BooleanField(default=False)
     vaccinated = models.BooleanField(default=False)
     experience = models.BooleanField(default=False)
-    info = models.TextField()
+    info = models.TextField(blank=True)
     owner_first_name = models.CharField(max_length=200, blank=False)
     owner_last_name = models.CharField(max_length=200, blank=False)
     email = models.EmailField(blank=False)
@@ -82,4 +93,4 @@ class Application(models.Model):
         ordering = ['created_on']
 
     def __str__(self):
-        return self.slug
+        return self.dog_name

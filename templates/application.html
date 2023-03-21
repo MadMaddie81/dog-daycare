@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+<main id="main">
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h1><strong>Apply for Daycare</strong></h1>
+                    <p>After you have submitted the form we will get in touch with you when a daycare spot opens up.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container navbar">
+            <ol>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="crumb">Apply for Daycare</li>
+            </ol>
+        </div>
+    </section>
+
+    {% if user.is_authenticated %}
+    <div class="row">
+        <div class="col-4 container-sm mb-5">
+            <form method="post">
+                {{ application_form | crispy }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-signup btn-lg btn-info" id="apply-button">Send Application</button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col mb-5 min-vh-100">
+            <h2 class="text-center">You need to be logged in to apply for daycare</h2>
+        </div>
+    </div>
+    {% endif %}
+</main>
+
+{% endblock %}

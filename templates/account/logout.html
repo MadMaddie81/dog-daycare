@@ -24,13 +24,13 @@
     </section>
     <div class="container">
         <div class="row">
-            <div class="col-md-8 mt-3 offset-md-5 signup-form">
+            <div class="col-md-4 mt-3 offset-md-5 signup-form">
                 <form method="post" action="{% url 'account_logout' %}">
                     {% csrf_token %}
                     {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                     {% endif %}
-                    <button class="btn btn-signup right" type="submit">{% trans 'Log Out' %}</button>
+                    <button class="btn btn-signup" type="submit">{% trans 'Log Out' %}</button>
                 </form>
             </div>
         </div>
