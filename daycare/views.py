@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Service
+from .models import Service, Application
 from .forms import ApplicationForm
 
 
@@ -20,7 +20,7 @@ class Services(generic.ListView):
     ordering = ['price']
 
 
-class Application(View):
+class ApplicationView(View):
 
     def get(self, request, *args, **kwargs):
         return render(
@@ -28,7 +28,7 @@ class Application(View):
             "application.html",
             {'application_form': ApplicationForm()}
             )
-    
+
     def post(self, request, *args, **kwargs):
 
         application_form = ApplicationForm(data=request.POST)
@@ -38,8 +38,19 @@ class Application(View):
             application_form.save()
         else:
             application_form = ApplicationForm()
-        
+
         return render(
             request,
             'index.html'
+        )
+
+
+class MyApplications(generic.ListView):
+
+    def get(self, request, *args, **kwargs):
+        apps = Application.objects.filter(author=request.user.username)
+        return render(
+            request,
+            'view_application.html',
+            {'apps': (apps)}
         )

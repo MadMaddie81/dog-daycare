@@ -161,7 +161,7 @@ body {
   .navbar .active,
   .navbar .active:focus,
   .navbar li:hover>a {
-    color: #078872;
+    color: #0fe2bf;
   }
   
   .navbar .getstarted,
@@ -178,7 +178,7 @@ body {
   .navbar .getstarted:focus:hover,
   #apply-button:hover {
     color: #fff;
-    background: #078872;
+    background: #0fe2bf;
   }
   
   .navbar .dropdown ul {
@@ -2326,4 +2326,50 @@ body {
   #apply-button {
     margin-left: 0;
     margin-top: 10px;
+  }
+
+  .status-box {
+    padding: 20px;
+    margin-bottom: 30px;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .status-box h4 {
+    font-weight: 400;
+    margin: -20px -20px 20px -20px;
+    padding: 20px 15px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .status-box h5 {
+    font-weight: 700;
+  }
+
+  .status-box ul {
+    padding: 10px 0 0 0;
+    margin-top: 15px;
+    list-style: none;
+    color: #444444;
+    text-align: center;
+    line-height: 30px;
+    font-size: 18px;
+  }
+
+  .pending {
+    background: #078872;
+  }
+
+  .approved {
+    background: #86b03c;
+  }
+
+  .declined {
+    background: #f14c1f;
   }

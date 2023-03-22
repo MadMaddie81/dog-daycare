@@ -43,25 +43,10 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="active" href="{% url 'home' %}">Home</a></li>
-                    <!-- <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="team.html">Team</a></li>
-                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i
-                                        class="bi bi-chevron-right"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Drop Down 1</a></li>
-                                    <li><a href="#">Deep Drop Down 2</a></li>
-                                    <li><a href="#">Deep Drop Down 3</a></li>
-                                    <li><a href="#">Deep Drop Down 4</a></li>
-                                    <li><a href="#">Deep Drop Down 5</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li> -->
+                    <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'services' %}">Daycare Packages</a></li>
                     {% if user.is_authenticated %}
+                    <li><a href="{% url 'my_applications' %}">My Applications</a></li>
                     <li><a class="getstarted" href="{% url 'account_logout' %}">Log Out</a></li>
                     {% else %}
                     <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
