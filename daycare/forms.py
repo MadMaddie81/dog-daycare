@@ -1,11 +1,12 @@
 from .models import Application
 from django import forms
+from django.forms import ModelForm
 
 
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
-        fields = [
+        fields = (
             'package',
             'dog_name',
             'breed',
@@ -20,7 +21,7 @@ class ApplicationForm(forms.ModelForm):
             'owner_first_name',
             'owner_last_name',
             'email',
-        ]
+        )
         labels = {
             'package': "Pick a Daycare Package:",
             'dog_name': "Dog's name:",

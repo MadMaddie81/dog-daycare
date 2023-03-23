@@ -3,21 +3,21 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-
 <main id="main">
     <section id="breadcrumbs" class="breadcrumbs">
         <div class="breadcrumb-hero">
             <div class="container">
                 <div class="breadcrumb-hero">
-                    <h1><strong>Apply for Daycare</strong></h1>
-                    <p>After you have submitted the form we will get in touch with you when a daycare spot opens up.</p>
+                    <h1><strong>Edit Your Application</strong></h1>
+                    <p>Has your circumstanses changed? Maybe you discovered a typo?</p>
+                    <p>No worries. You can edit your application.</p>
                 </div>
             </div>
         </div>
         <div class="container navbar">
             <ol>
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li class="crumb">Apply for Daycare</li>
+                <li class="crumb">Update Application</li>
             </ol>
         </div>
     </section>
@@ -26,9 +26,11 @@
     <div class="row">
         <div class="col-4 container-sm mb-5">
             <form method="post">
-                {{ application_form | crispy }}
                 {% csrf_token %}
-                <button type="submit" class="btn btn-signup btn-lg" id="apply-button">Send Application</button>
+                {{ form.id }}
+                {{ form |crispy }}
+                <button type="submit" class="btn btn-signup btn-lg" id="apply-button">Update Application</button>
+                <a href="{% url 'my_applications' %}"><button type="button" class="btn btn-signup btn-lg" id="cancel-button">Cancel</button></a>
             </form>
         </div>
     </div>

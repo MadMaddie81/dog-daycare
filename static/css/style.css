@@ -166,7 +166,7 @@ body {
   
   .navbar .getstarted,
   .navbar .getstarted:focus,
-  #apply-button {
+  #apply-button, {
     background: #078872;
     padding: 8px 25px;
     margin-left: 30px;
@@ -2315,7 +2315,8 @@ body {
     margin-bottom: 80px;
   }
 
-  .signup-form button {
+  .signup-form button,
+  .status-box button {
     background: #078872;
     padding: 8px 25px;
     border-radius: 50px;
@@ -2324,13 +2325,32 @@ body {
   }
 
   #apply-button {
-    margin-left: 0;
+    background: #078872;
+    padding: 8px 25px;
+    margin-left: 0px;
     margin-top: 10px;
+    border-radius: 50px;
+    color: #fff;
+  }
+
+  #cancel-button {
+    background: #f14c1f;
+    position: absolute;
+    right: 0;
+    padding: 8px 25px;
+    margin-left: 30px;
+    margin-top: 10px;
+    border-radius: 50px;
+    color: #fff;
+  }
+
+  #cancel-button:hover {
+    background: #ffa085;
   }
 
   .status-box {
     padding: 20px;
-    margin-bottom: 30px;
+    margin: 0 5px 30px 5px;
     background: #fff;
     text-align: center;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.12);
@@ -2343,6 +2363,7 @@ body {
     font-weight: 400;
     margin: -20px -20px 20px -20px;
     padding: 20px 15px;
+    min-height: 80px;
     font-size: 20px;
     font-weight: 600;
     color: #fff;
@@ -2360,6 +2381,10 @@ body {
     text-align: center;
     line-height: 30px;
     font-size: 18px;
+  }
+
+  .status-box ul li {
+    font-size: 16px;
   }
 
   .pending {
