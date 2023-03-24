@@ -1,8 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.urls import reverse_lazy
 from django.views import generic, View
-from django.views.generic.edit import UpdateView, CreateView, ModelFormMixin
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from .models import Service, Application
@@ -79,5 +78,12 @@ class EditApplication(UpdateView):
             'owner_last_name',
             'email',
         )
+    pk_url_kwarg = 'pk'
+    success_url = reverse_lazy('my_applications')
+
+
+class DeleteApplication(DeleteView):
+    model = Application
+    template_name = 'delete_application.html'
     pk_url_kwarg = 'pk'
     success_url = reverse_lazy('my_applications')

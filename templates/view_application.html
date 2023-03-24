@@ -75,7 +75,13 @@
 
                     </ul>
                     <a href="{% url 'edit_application' app.pk%}" class="btn btn-signup btn-lg"><button>Edit</button></a>
+                    <a href="{% url 'delete_application' app.pk%}" class="btn btn-signup btn-lg"><button><i class="fa-regular fa-trash-can"></i></button></a>
                     
+                </div>
+                {% empty %}
+                <div class="col mb-5 min-vh-100">
+                    <h2 class="text-center">You don't have any active applications</h2>
+                    <a href="{% url 'services' %}" class="btn btn-signup btn-lg mx-auto" id="apply-button">View Daycare Packages</a>
                 </div>
                 {% endfor %}
                 {% else %}
