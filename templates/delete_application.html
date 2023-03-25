@@ -19,8 +19,12 @@
             <form method="post" class="d-flex justify-content-around">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-signup btn-lg" id="apply-button">YES</button>
-                <a href="{% url 'my_applications' %}"><button type="submit" class="btn btn-signup btn-lg" id="cancel-button">NO</button></a>
             </form>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <a href="{% url 'my_applications' %}"><button class="btn btn-signup btn-lg float-none" id="cancel-button">NO</button></a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
