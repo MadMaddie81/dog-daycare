@@ -4,6 +4,7 @@ from cloudinary.models import CloudinaryField
 
 
 class Service(models.Model):
+    # Model for daycare service packages
     title = models.CharField(max_length=200, unique=True)
     no_days = models.IntegerField()
     nails = models.BooleanField(default=False)
@@ -18,7 +19,7 @@ class Service(models.Model):
 
 
 class Application(models.Model):
-
+    # Model for daycare application form
     PACKAGE = [
         (None, 'Pick a choice'),
         ('Iron', 'Iron Package'),

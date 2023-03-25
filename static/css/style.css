@@ -6,6 +6,12 @@
 * License: https://bootstrapmade.com/license/
 */
 
+/**
+* This template has been adjusted and added to for this specific project
+* by Madeleine Vikner
+* Site specific styling starts at line 2316
+*/
+
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -2311,6 +2317,7 @@ body {
   Styling added by myself - Madeleine Vikner
   --------------------------------------------------------------*/
 
+  /* Styling specific for small screens */
   .mob-navbar {
     display: none;
     padding: 10px 0 10px 30px;
@@ -2360,6 +2367,8 @@ body {
       display: block;
     }
   }
+
+  /* Specific styling for containers and buttons */
 
   .signup-form {
     margin-bottom: 80px;

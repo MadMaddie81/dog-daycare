@@ -11,7 +11,7 @@ from .forms import ApplicationForm
 
 
 class Home(generic.View):
-
+    # View for landingpage
     def get(self, request, *args, **kwargs):
         return render(
             request,
@@ -20,13 +20,14 @@ class Home(generic.View):
 
 
 class Services(generic.ListView):
+    # View for listing the daycare service packages
     model = Service
     template_name = 'services.html'
     ordering = ['price']
 
 
 class ApplicationView(View):
-
+    # View for the daycare application form
     def get(self, request, *args, **kwargs):
         return render(
             request,
@@ -51,7 +52,7 @@ class ApplicationView(View):
 
 
 class MyApplications(generic.ListView):
-
+    # View for listing submitted applications
     def get(self, request, *args, **kwargs):
         apps = Application.objects.filter(author=request.user.username)
         return render(
@@ -62,7 +63,7 @@ class MyApplications(generic.ListView):
 
 
 class EditApplication(SuccessMessageMixin, UpdateView):
-
+    # View for editing a submitted application
     model = Application
     template_name = 'edit_application.html'
     fields = (
@@ -87,6 +88,7 @@ class EditApplication(SuccessMessageMixin, UpdateView):
 
 
 class DeleteApplication(DeleteView):
+    # View for deleting an application
     model = Application
     template_name = 'delete_application.html'
     pk_url_kwarg = 'pk'
