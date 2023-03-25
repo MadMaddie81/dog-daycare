@@ -4,41 +4,45 @@
 {% load crispy_forms_tags %}
 
 
-<main id="main">
-    <section id="breadcrumbs" class="breadcrumbs">
-        <div class="breadcrumb-hero">
-            <div class="container">
-                <div class="breadcrumb-hero">
-                    <h1><strong>Apply for Daycare</strong></h1>
-                    <p>After you have submitted the form we will get in touch with you when a daycare spot opens up.</p>
-                </div>
+
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="breadcrumb-hero">
+        <div class="container">
+            <div class="breadcrumb-hero">
+                <h1><strong>Apply for Daycare</strong></h1>
+                <p>After you have submitted the form we will get in touch with you when a daycare spot opens up.</p>
             </div>
         </div>
-        <div class="container navbar">
-            <ol>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li class="crumb">Apply for Daycare</li>
-            </ol>
-        </div>
-    </section>
+    </div>
+    <div class="container navbar">
+        <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li class="crumb">Apply for Daycare</li>
+        </ol>
+    </div>
+</section>
 
-    {% if user.is_authenticated %}
-    <div class="row">
-        <div class="col-4 container-sm mb-5">
-            <form method="post">
-                {{ application_form | crispy }}
-                {% csrf_token %}
-                <button type="submit" class="btn btn-signup btn-lg" id="apply-button">Send Application</button>
-            </form>
-        </div>
+{% if user.is_authenticated %}
+<div class="row">
+    <div class="col-lg-4 p-5 pt-0 container-sm mb-5">
+        <form class="d-flex justify-content-center flex-column" method="post">
+            {{ application_form | crispy }}
+            {% csrf_token %}
+            <div class="row d-flex justify-content-center">
+                <div class="col-6">
+                    <button type="submit" class="btn btn-signup btn-lg" id="apply-button">Send Application</button>
+                </div>
+            </div>
+        </form>
     </div>
-    {% else %}
-    <div class="row">
-        <div class="col mb-5 min-vh-100">
-            <h2 class="text-center">You need to be logged in to apply for daycare</h2>
-        </div>
+</div>
+{% else %}
+<div class="row">
+    <div class="col mb-5 min-vh-100">
+        <h2 class="text-center">You need to be logged in to apply for daycare</h2>
     </div>
-    {% endif %}
-</main>
+</div>
+{% endif %}
+
 
 {% endblock %}

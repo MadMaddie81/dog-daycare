@@ -3,44 +3,44 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<main id="main">
-    <section id="breadcrumbs" class="breadcrumbs">
-        <div class="breadcrumb-hero">
-            <div class="container">
-                <div class="breadcrumb-hero">
-                    <h1><strong>Edit Your Application</strong></h1>
-                    <p>Has your circumstanses changed? Maybe you discovered a typo?</p>
-                    <p>No worries. You can edit your application.</p>
-                </div>
+
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="breadcrumb-hero">
+        <div class="container">
+            <div class="breadcrumb-hero">
+                <h1><strong>Edit Your Application</strong></h1>
+                <p>Has your circumstanses changed? Maybe you discovered a typo?</p>
+                <p>No worries. You can edit your application.</p>
             </div>
         </div>
-        <div class="container navbar">
-            <ol>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li class="crumb">Update Application</li>
-            </ol>
-        </div>
-    </section>
+    </div>
+    <div class="container navbar">
+        <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li class="crumb">Update Application</li>
+        </ol>
+    </div>
+</section>
 
-    {% if user.is_authenticated %}
-    <div class="row">
-        <div class="col-4 container-sm mb-5">
-            <form method="post">
-                {% csrf_token %}
-                {{ form.id }}
-                {{ form |crispy }}
-                <button type="submit" class="btn btn-signup btn-lg" id="apply-button">Update Application</button>
-                <a href="{% url 'my_applications' %}"><button type="button" class="btn btn-signup btn-lg" id="cancel-button">Cancel</button></a>
-            </form>
-        </div>
+{% if user.is_authenticated %}
+<div class="row">
+    <div class="col-lg-6 p-4 pt-0 container-sm mb-5">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.id }}
+            {{ form |crispy }}
+            <button type="submit" class="btn btn-signup btn-lg" id="apply-button">Update Application</button>
+            <a href="{% url 'my_applications' %}"><button type="submit" class="btn btn-signup btn-lg" id="cancel-button"><i class="fa-solid fa-x"></i></button></a>
+        </form>
     </div>
-    {% else %}
-    <div class="row">
-        <div class="col mb-5 min-vh-100">
-            <h2 class="text-center">You need to be logged in to apply for daycare</h2>
-        </div>
+</div>
+{% else %}
+<div class="row">
+    <div class="col mb-5 min-vh-100">
+        <h2 class="text-center">You need to be logged in to apply for daycare</h2>
     </div>
-    {% endif %}
-</main>
+</div>
+{% endif %}
+
 
 {% endblock %}

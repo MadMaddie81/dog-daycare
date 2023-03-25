@@ -2,89 +2,89 @@
 
 {% block content %}
 
-<main id="main">
 
-    <section id="breadcrumbs" class="breadcrumbs">
-        <div class="breadcrumb-hero">
-            <div class="container">
-                <div class="breadcrumb-hero">
-                    <h1><strong>Daycare Packages</strong></h1>
-                    <p>Our daycare services are subscription-based and come in serveral different sizes.</p>
-                </div>
+
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="breadcrumb-hero">
+        <div class="container">
+            <div class="breadcrumb-hero">
+                <h1><strong>Daycare Packages</strong></h1>
+                <p>Our daycare services are subscription-based and come in serveral different sizes.</p>
             </div>
         </div>
-        <div class="container navbar">
-            <ol>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li class="crumb">Daycare Packages</li>
-            </ol>
-        </div>
-    </section>
+    </div>
+    <div class="container navbar">
+        <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li class="crumb">Daycare Packages</li>
+        </ol>
+    </div>
+</section>
 
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <div class="row">
+<section id="pricing" class="pricing">
+    <div class="container">
+        <div class="row">
 
-                {% for service in service_list %}
+            {% for service in service_list %}
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="box featured" data-aos="fade-up">
-                        <h3>{{ service.title }}</h3>
-                        <h4><sup>€</sup>{{ service.price }}<span> / month</span></h4>
-                        <h6><i class="fa-solid fa-calendar-check"></i> {{ service.no_days }} days / week</h6>
-                        <h6><i class="fa-solid fa-clock"></i> Pick-up / Drop-off: 7-18</h6>
-                        <ul>
-                            <h6><strong>Services included:</strong></h6>
-                            <li>2 walks per day</li>
+            <div class="col-lg-3 col-md-6">
+                <div class="box featured" data-aos="fade-up">
+                    <h3>{{ service.title }}</h3>
+                    <h4><sup>€</sup>{{ service.price }}<span> / month</span></h4>
+                    <h6><i class="fa-solid fa-calendar-check"></i> {{ service.no_days }} days / week</h6>
+                    <h6><i class="fa-solid fa-clock"></i> Pick-up / Drop-off: 7-18</h6>
+                    <ul>
+                        <h6><strong>Services included:</strong></h6>
+                        <li>2 walks per day</li>
 
-                            {% if service.nails %}
-                            <li>1 nail trimming / month</li>
-                            {% else %}
-                            <li class="na">1 nail trimming / month</li>
-                            {% endif %}
+                        {% if service.nails %}
+                        <li>1 nail trimming / month</li>
+                        {% else %}
+                        <li class="na">1 nail trimming / month</li>
+                        {% endif %}
 
-                            {% if service.teeth %}
-                            <li>1 toothbrushing / month</li>
-                            {% else %}
-                            <li class="na">1 toothbrushing / month</li>
-                            {% endif %}
+                        {% if service.teeth %}
+                        <li>1 toothbrushing / month</li>
+                        {% else %}
+                        <li class="na">1 toothbrushing / month</li>
+                        {% endif %}
 
-                            {% if service.bath %}
-                            <li>1 bath / month</li>
-                            {% else %}
-                            <li class="na">1 bath / month</li>
-                            {% endif %}
+                        {% if service.bath %}
+                        <li>1 bath / month</li>
+                        {% else %}
+                        <li class="na">1 bath / month</li>
+                        {% endif %}
 
-                            {% if service.hair_cuts %}
-                            <li>2 haircuts / year</li>
-                            {% else %}
-                            <li class="na">2 haircuts / year</li>
-                            {% endif %}
+                        {% if service.hair_cuts %}
+                        <li>2 haircuts / year</li>
+                        {% else %}
+                        <li class="na">2 haircuts / year</li>
+                        {% endif %}
 
-                            {% if service.pickup %}
-                            <li>1 pick-up / drop-off / month</li>
-                            {% else %}
-                            <li class="na">1 pick-up / drop-off / month</li>
-                            {% endif %}
-                        </ul>
-                        <div class="btn-wrap">
-                            {% if user.is_authenticated %}
-                            <a href="{% url 'application' %}" class="btn-buy">Apply Now</a>
-                            {% else %}
-                            <a href="{% url 'account_login' %}" class="btn-buy">Apply Now</a>
-                            {% endif %}
-                        </div>
+                        {% if service.pickup %}
+                        <li>1 pick-up / drop-off / month</li>
+                        {% else %}
+                        <li class="na">1 pick-up / drop-off / month</li>
+                        {% endif %}
+                    </ul>
+                    <div class="btn-wrap">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'application' %}" class="btn-buy">Apply Now</a>
+                        {% else %}
+                        <a href="{% url 'account_login' %}" class="btn-buy">Apply Now</a>
+                        {% endif %}
                     </div>
                 </div>
-                
-                {% endfor %}
-
             </div>
+
+            {% endfor %}
+
         </div>
+    </div>
 
-    </section>
+</section>
 
 
-</main>
+
 
 {% endblock %}

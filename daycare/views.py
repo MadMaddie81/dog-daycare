@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.urls import reverse_lazy
 from django.views import generic, View
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from .models import Service, Application
@@ -38,6 +40,7 @@ class ApplicationView(View):
         if application_form.is_valid():
             application_form.instance.author = request.user.username
             application_form.save()
+            messages.success(request, 'Your application has been submitted.')
         else:
             application_form = ApplicationForm()
 
@@ -58,7 +61,7 @@ class MyApplications(generic.ListView):
         )
 
 
-class EditApplication(UpdateView):
+class EditApplication(SuccessMessageMixin, UpdateView):
 
     model = Application
     template_name = 'edit_application.html'
@@ -80,6 +83,7 @@ class EditApplication(UpdateView):
         )
     pk_url_kwarg = 'pk'
     success_url = reverse_lazy('my_applications')
+    success_message = "Your application has been updated."
 
 
 class DeleteApplication(DeleteView):
@@ -87,3 +91,7 @@ class DeleteApplication(DeleteView):
     template_name = 'delete_application.html'
     pk_url_kwarg = 'pk'
     success_url = reverse_lazy('my_applications')
+
+    def form_valid(self, form):
+        messages.success(self.request, "Your application has been deleted.")
+        return super(DeleteApplication, self).form_valid(form)

@@ -3,96 +3,98 @@
 {% block content %}
 
 
-<main id="main">
-    <section id="breadcrumbs" class="breadcrumbs">
-        <div class="breadcrumb-hero">
-            <div class="container">
-                <div class="breadcrumb-hero">
-                    <h1><strong>My Applications</strong></h1>
-                    <p>These are your currently active applications.</p>
-                </div>
+
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="breadcrumb-hero">
+        <div class="container">
+            <div class="breadcrumb-hero">
+                <h1><strong>My Applications</strong></h1>
+                <p>These are your currently active applications.</p>
             </div>
         </div>
-        <div class="container navbar">
-            <ol>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li class="crumb">My applications</li>
-            </ol>
-        </div>
-    </section>
+    </div>
+    <div class="container navbar">
+        <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li class="crumb">My applications</li>
+        </ol>
+    </div>
+</section>
 
 
-    <section>
-        <div class="container">
-            <div class="row">
-                {% if user.is_authenticated %}
-                {% for app in apps %}
-                <div class="col-lg-3 col-md-6 container-sm text-center status-box">
-                    {% if app.status == 0 %}
-                    <div>
-                        <h4 class="p-3 pending">Your application is pending...</h4>
-                    </div>
-                    {% endif %}
-                    {% if app.status == 1 %}
-                    <div>
-                        <h4 class="p-3 approved">Your application has been approved!</h4>
-                    </div>
-                    {% endif %}
-                    {% if app.status == 3 %}
-                    <div>
-                        <h4 class="p-3 declined">Your application has been declined</h4>
-                    </div>
-                    {% endif %}
-                    <h6><strong>You have chosen the {{ app.package }} Package</strong></h6>
-                    <ul class="app_list">
-                        <li><strong>Dog's name:</strong> {{ app.dog_name }}</li>
-                        <li><strong>Breed:</strong> {{ app.breed }}</li>
-                        <li><strong>Size:</strong> {{ app.height }}</li>
-                        <li><strong>Gender:</strong> {{ app.gender }}</li>
-                        {% if app.neutered %}
-                        <li><strong>Neutered/Spayed:</strong> Yes</li>
-                        {% else %}
-                        <li><strong>Neutered/Spayed:</strong> No</li>
-                        {% endif %}
-                        {% if app.insured %}
-                        <li><strong>Insured:</strong> Yes</li>
-                        {% else %}
-                        <li><strong>Insured:</strong> No</li>
-                        {% endif %}
-                        {% if app.vaccinated %}
-                        <li><strong>Vaccinated:</strong> Yes</li>
-                        {% else %}
-                        <li><strong>Vaccinated:</strong> No</li>
-                        {% endif %}
-                        {% if app.experience %}
-                        <li><strong>Experience from daycare:</strong> Yes</li>
-                        {% else %}
-                        <li><strong>Experience from daycare:</strong> No</li>
-                        {% endif %}
-                        <li><strong>Info:</strong> {{ app.info }}</li>
-                        <li><strong>Owner:</strong> {{ app.owner_first_name }} {{ app.owner_last_name }}</li>
-                        <li><strong>Email:</strong> {{ app.email }}</li>
-
-                    </ul>
-                    <a href="{% url 'edit_application' app.pk%}" class="btn btn-signup btn-lg"><button>Edit</button></a>
-                    <a href="{% url 'delete_application' app.pk%}" class="btn btn-signup btn-lg"><button><i class="fa-regular fa-trash-can"></i></button></a>
-                    
-                </div>
-                {% empty %}
-                <div class="col mb-5 min-vh-100">
-                    <h2 class="text-center">You don't have any active applications</h2>
-                    <a href="{% url 'services' %}" class="btn btn-signup btn-lg mx-auto" id="apply-button">View Daycare Packages</a>
-                </div>
-                {% endfor %}
-                {% else %}
-                <div class="col mb-5 min-vh-100">
-                    <h2 class="text-center">You need to be logged in to apply for daycare</h2>
+<section>
+    <div class="container">
+        <div class="row d-flex justify-content-center p-4 pt-0">
+            {% if user.is_authenticated %}
+            {% for app in apps %}
+            <div class="col-lg-6 col-md-6 m-3 container text-center status-box" data-aos="fade-up">
+                {% if app.status == 0 %}
+                <div>
+                    <h4 class="p-3 pending">Your application is pending...</h4>
                 </div>
                 {% endif %}
-            </div>
-        </div>
-    </section>
+                {% if app.status == 1 %}
+                <div>
+                    <h4 class="p-3 approved">Your application has been approved!</h4>
+                </div>
+                {% endif %}
+                {% if app.status == 3 %}
+                <div>
+                    <h4 class="p-3 declined">Your application has been declined</h4>
+                </div>
+                {% endif %}
+                <h6><strong>You have chosen the {{ app.package }} Package</strong></h6>
+                <ul class="app_list">
+                    <li><strong>Dog's name:</strong> {{ app.dog_name }}</li>
+                    <li><strong>Breed:</strong> {{ app.breed }}</li>
+                    <li><strong>Size:</strong> {{ app.height }}</li>
+                    <li><strong>Gender:</strong> {{ app.gender }}</li>
+                    {% if app.neutered %}
+                    <li><strong>Neutered/Spayed:</strong> Yes</li>
+                    {% else %}
+                    <li><strong>Neutered/Spayed:</strong> No</li>
+                    {% endif %}
+                    {% if app.insured %}
+                    <li><strong>Insured:</strong> Yes</li>
+                    {% else %}
+                    <li><strong>Insured:</strong> No</li>
+                    {% endif %}
+                    {% if app.vaccinated %}
+                    <li><strong>Vaccinated:</strong> Yes</li>
+                    {% else %}
+                    <li><strong>Vaccinated:</strong> No</li>
+                    {% endif %}
+                    {% if app.experience %}
+                    <li><strong>Experience from daycare:</strong> Yes</li>
+                    {% else %}
+                    <li><strong>Experience from daycare:</strong> No</li>
+                    {% endif %}
+                    <li><strong>Info:</strong> {{ app.info }}</li>
+                    <li><strong>Owner:</strong> {{ app.owner_first_name }} {{ app.owner_last_name }}</li>
+                    <li><strong>Email:</strong> {{ app.email }}</li>
 
-</main>
+                </ul>
+                <a href="{% url 'edit_application' app.pk%}"><button class="btn btn-lg" id="apply-button">Edit</button></a>
+                <a href="{% url 'delete_application' app.pk%}"><button class="btn btn-lg" id="cancel-button"><i
+                            class="fa-regular fa-trash-can"></i></button></a>
+
+            </div>
+            {% empty %}
+            <div class="col mb-5 min-vh-100 no-apps">
+                <h2 class="text-center">You don't have any active applications</h2>
+                <a href="{% url 'services' %}" class="btn btn-signup btn-lg mx-auto" id="apply-button">View Daycare
+                    Packages</a>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col mb-5 min-vh-100">
+                <h2 class="text-center">You need to be logged in to apply for daycare</h2>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+
 
 {% endblock %}

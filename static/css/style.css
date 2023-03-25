@@ -166,7 +166,7 @@ body {
   
   .navbar .getstarted,
   .navbar .getstarted:focus,
-  #apply-button, {
+  #apply-button {
     background: #078872;
     padding: 8px 25px;
     margin-left: 30px;
@@ -2311,6 +2311,56 @@ body {
   Styling added by myself - Madeleine Vikner
   --------------------------------------------------------------*/
 
+  .mob-navbar {
+    display: none;
+    padding: 10px 0 10px 30px;
+    font-family: "Raleway", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #565e49;
+    white-space: nowrap;
+    transition: 0.3s;
+    text-decoration: none;
+  }
+
+  .mob-navbar ul {
+    margin: 0;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    align-items: center;
+    background: #fff;
+  }
+
+  .mob-navbar ul li a {
+    color: #565e49;
+    text-decoration: none;
+  }
+
+  @media (max-width: 991px) {
+
+    #main {
+      margin-top: 170px;
+      z-index: 3;
+      position: static;
+    }
+
+    #header {
+      flex-direction: column;
+      height: 170px;
+    }
+
+    .logo {
+      margin: 0 auto;
+      padding-top: 10px;
+    }
+
+    .mob-navbar {
+      display: block;
+    }
+  }
+
   .signup-form {
     margin-bottom: 80px;
   }
@@ -2326,7 +2376,8 @@ body {
 
   #apply-button {
     background: #078872;
-    padding: 8px 25px;
+    padding: 8px 20px;
+    float: left;
     margin-left: 0px;
     margin-top: 10px;
     border-radius: 50px;
@@ -2336,10 +2387,8 @@ body {
 
   #cancel-button {
     background: #f14c1f;
-    position: absolute;
-    right: 0;
-    padding: 8px 25px;
-    margin-left: 30px;
+    float: right;
+    padding: 8px 20px;
     margin-top: 10px;
     border-radius: 50px;
     color: #fff;
@@ -2347,6 +2396,17 @@ body {
 
   #cancel-button:hover {
     background: #ffa085;
+  }
+
+  .no-apps {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .no-apps h2 {
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: #565e49;
   }
 
   .status-box {
@@ -2378,7 +2438,7 @@ body {
     padding: 10px 0 0 0;
     margin-top: 15px;
     list-style: none;
-    color: #444444;
+    color: #565e49;
     text-align: center;
     line-height: 30px;
     font-size: 18px;
