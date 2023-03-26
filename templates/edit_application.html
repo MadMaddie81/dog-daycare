@@ -25,12 +25,15 @@
 {% if user.is_authenticated %}
 <div class="row">
     <div class="col-lg-6 p-4 pt-0 container-sm mb-5">
-        <form method="post">
+        <form method="post" class="d-flex justify-content-center flex-column">
             {% csrf_token %}
             {{ form.id }}
             {{ form |crispy }}
-            <button type="submit" class="btn btn-signup btn-lg" id="apply-button">Update Application</button>
-            <a href="{% url 'my_applications' %}"><button type="submit" class="btn btn-signup btn-lg" id="cancel-button"><i class="fa-solid fa-x"></i></button></a>
+            <div class="row d-flex justify-content-center">
+                <div class="col-6 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-signup btn-lg" id="apply-button">Update Application</button>
+                </div>
+            </div>
         </form>
     </div>
 </div>
